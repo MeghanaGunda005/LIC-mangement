@@ -8,7 +8,7 @@ app = Flask(__name__)
 mongo_uri = os.environ.get("MONGO_URI")
 client = MongoClient(mongo_uri)
 db = client['licadmin']
-collection = db['data'] 
+collection = db['liccollection'] 
 
 @app.route('/')
 def index():
