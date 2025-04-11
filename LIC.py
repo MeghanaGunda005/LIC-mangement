@@ -7,7 +7,7 @@ app = Flask(__name__)
 from urllib.parse import quote_plus
 
 username = quote_plus("licadmin")
-password = quote_plus("licproject@2025")
+password = quote_plus("licproject")
 mongo_uri = f"mongodb+srv://{username}:{password}@cluster.mongodb.net/dbname"
 client = MongoClient(mongo_uri)
 
