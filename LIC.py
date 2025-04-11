@@ -4,8 +4,13 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# Connect to MongoDB
-mongo_uri = os.environ.get("MONGO_URI")
+from urllib.parse import quote_plus
+
+username = quote_plus("licadmin")
+password = quote_plus("licproject@2025")
+mongo_uri = f"mongodb+srv://{username}:{password}@cluster.mongodb.net/dbname"
+client = MongoClient(mongo_uri)
+
 client = MongoClient(mongo_uri)
 db = client['licadmin']
 collection = db['liccollection'] 
