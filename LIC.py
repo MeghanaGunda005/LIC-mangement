@@ -102,9 +102,9 @@ def new():
 @app.route("/close", methods=["GET", "POST"])
 def close_policy():
     if request.method == "POST":
-        policy_no = request.form.get("policy_no")
+        policy_no = safe_int(request.form.get("policy_no"))
         result = collection.update_one(
-            {"policy_no": policy_no},
+            {"Policy No": policy_no},
             {"$set": {"Status": "Closed"}}
         )
 
@@ -114,6 +114,7 @@ def close_policy():
             return f"<h2>Policy not found.</h2><a href='/close'>Try Again</a>"
 
     return render_template("Close.html")
+
 
 
 
