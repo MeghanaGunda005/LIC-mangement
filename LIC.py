@@ -8,7 +8,7 @@ from urllib.parse import quote_plus
 
 username = quote_plus("licadmin")
 password = quote_plus("licproject")
-mongo_uri = f"mongodb+srv://{username}:{password}@cluster.mongodb.net/dbname"
+mongo_uri = f"mongodb+srv://licadmin:licproject@cluster1.qqsspck.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
 client = MongoClient(mongo_uri)
 
 client = MongoClient(mongo_uri)
