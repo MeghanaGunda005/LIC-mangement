@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Close Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        panel {
+            background-color: #0a1177;
+            color: white;
+            display: block;
+            padding: 20px;
+        }
+        .header {
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; 
+        }
+        .my {
+            border: 0px solid black;
+            padding: 5px;
+            display: flex;
+            align-items: left;
+            justify-content: space-between;
+        }
+        img{
+            border-radius: 10px; 
+            object-fit: cover;
+            display: inline-block;
+            padding: 0px;
+            vertical-align: middle;
+            height: 60px;
+            width: 120px;
+        }
+        a{
+            color: white;
+            padding: 40px;
+            font-size: 20px;
+            text-decoration: none;
+            position: relative;
+        }
+        b{
+            text-align: left;
+            font-size: 20px;
+            padding: 40px;
+        }
+        .container { max-width: 600px; margin: 40px auto; text-align: center; }
+        input { padding: 10px; width: 300px; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; background-color: navy; color: white; border: none; border-radius: 6px; margin-top: 20px; cursor: pointer; }
+        .message { margin-top: 20px; color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="img">
+            <img src="{{ url_for('static', filename='Images/LIC.png') }}" alt="Logo"/>
+        </div>
+        <div>
+            <h1>LIC</h1>
+        </div>
+    </div>
+    <panel>
+        <b>HELLO USER! &nbsp;&nbsp; WELCOME</b>
+        <a href="/">Home</a>
+        <a href="/new">New Entry</a>
+        <a href="/display">Display</a>
+        <a href="/edit">Edit Entry</a>
+        <a href="/close">Close Entry</a>
+        <a href="/list">List of Policies</a>
+    </panel>
+
+    <div class="container">
+        <h2>Close Policy Entry</h2>
+        <form method="POST">
+            <input type="text" name="policyNo" placeholder="Enter Policy Number to Delete"><br>
+            <button type="submit">Close Policy</button>
+        </form>
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

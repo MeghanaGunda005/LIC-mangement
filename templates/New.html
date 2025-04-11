@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        panel {
+            background-color: #0a1177;
+            color: white;
+            display: block;
+            padding: 20px;
+        }
+        .header {
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; 
+        }
+        .my {
+            border: 0px solid black;
+            padding: 5px;
+            display: flex;
+            align-items: left;
+            justify-content: space-between;
+        }
+        img{
+            border-radius: 10px; 
+            object-fit: cover;
+            display: inline-block;
+            padding: 0px;
+            vertical-align: middle;
+            height: 60px;
+            width: 120px;
+        }
+        a{
+            color: white;
+            padding: 40px;
+            font-size: 20px;
+            text-decoration: none;
+            position: relative;
+        }
+        b{
+            text-align: left;
+            font-size: 20px;
+            padding: 40px;
+        }
+        .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+
+  .form-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: navy;
+    margin-bottom: 30px;
+  }
+
+  .grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 40px;
+  }
+
+  .form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group label {
+  width: 120px;
+  font-weight: bold;
+  margin-bottom: 0; /* remove the default bottom space */
+  text-align: right;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+  .submit-button {
+    grid-column: span 2;
+    text-align: center;
+  }
+
+  .submit-button button {
+    background-color: navy;
+    color: white;
+    padding: 10px 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .submit-button button:hover {
+    background-color: #001f4d;
+  }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="img">
+            <img src="{{ url_for('static', filename='Images/LIC.png') }}" alt="Logo"/>
+        </div>
+        <div>
+            <h1>LIC</h1>
+        </div>
+    </div>
+    <panel>
+        <b>HELLO USER! &nbsp;&nbsp; WELCOME</b>
+        <a href="/">Home</a>
+        <a href="/new">New Entry</a>
+        <a href="/display">Display</a>
+        <a href="/edit">Edit Entry</a>
+        <a href="/close">Close Entry</a>
+        <a href="/list">List of Policies</a>
+    </panel>
+
+    <div class="form-container">
+        <div class="form-title">New Policy Entry</div>
+        <form method="POST">
+          <div class="grid-form">
+            <div class="form-group">
+              <label>Cell No:</label>
+              <input type="text" name="Cell No">
+            </div>
+            <div class="form-group">
+              <label>Policy No:</label>
+              <input type="text" name="Policy No">
+            </div>
+      
+            <div class="form-group">
+              <label>DOB:</label>
+              <input type="text" name="DOB" placeholder="dd-mm-yyyy">
+            </div>
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" name="Name">
+            </div>
+      
+            <div class="form-group">
+              <label>SA:</label>
+              <input type="text" name="SA">
+            </div>
+            <div class="form-group">
+              <label>DOC:</label>
+              <input type="text" name="DOC" placeholder="dd-mm-yyyy">
+            </div>
+      
+            <div class="form-group">
+              <label>Plan No:</label>
+              <input type="text" name="Plan No">
+            </div>
+            <div class="form-group">
+              <label>Term:</label>
+              <input type="number" name="Term">
+            </div>
+      
+            <div class="form-group">
+              <label>PPT:</label>
+              <input type="number" name="PPT">
+            </div>
+            <div class="form-group">
+              <label>Premium:</label>
+              <input type="text" name="Premium">
+            </div>
+      
+            <div class="form-group">
+              <label>DOM:</label>
+              <input type="text" name="DOM" placeholder="dd-mm-yyyy">
+            </div>
+            <div class="form-group">
+              <label>Mode:</label>
+              <input type="text" name="Mode">
+            </div>
+      
+            <div class="form-group">
+              <label>Next Due:</label>
+              <input type="text" name="Next Due" placeholder="dd-mm-yyyy">
+            </div>
+          <div class="form-group">
+            <label>Status:</label><input type="text" name="Status" >
+          </div>
+        </div><br>
+      
+          <div class="submit-button">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+          
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+
+</body>
+</html>

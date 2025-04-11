@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        panel {
+            background-color: #0a1177;
+            color: white;
+            display: block;
+            padding: 20px;
+        }
+        .header {
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; 
+        }
+        .my {
+            border: 0px solid black;
+            padding: 5px;
+            display: flex;
+            align-items: left;
+            justify-content: space-between;
+        }
+        img{
+            border-radius: 0px; 
+            object-fit: cover;
+            display: inline-block;
+            padding: 0px;
+            vertical-align: middle;
+            height: 60px;
+            width: 120px;
+        }
+        a{
+            color: white;
+            padding: 40px;
+            font-size: 20px;
+            text-decoration: none;
+            position: relative;
+        }
+        b{
+            text-align: left;
+            font-size: 20px;
+            padding: 40px;
+        }
+        form {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="img">
+            <img src="{{ url_for('static', filename='Images/LIC.png') }}" alt="Logo"/>
+        </div>
+        <div>
+            <h1>LIC</h1>
+        </div>
+    </div>
+    <panel>
+        <b>HELLO USER! &nbsp;&nbsp; WELCOME</b>
+        <a href="/">Home</a>
+        <a href="/new">New Entry</a>
+        <a href="/display">Display</a>
+        <a href="/edit">Edit Entry</a>
+        <a href="/close">Close Entry</a>
+        <a href="/list">List of Policies</a>
+    </panel>
+    <div class="form-container">
+        <form action="/login" method="POST">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+    
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

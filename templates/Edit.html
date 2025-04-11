@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        panel {
+            background-color: #0a1177;
+            color: white;
+            display: block;
+            padding: 20px;
+        }
+        .header {
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; 
+        }
+        .my {
+            border: 0px solid black;
+            padding: 5px;
+            display: flex;
+            align-items: left;
+            justify-content: space-between;
+        }
+        img{
+            border-radius: 10px; 
+            object-fit: cover;
+            display: inline-block;
+            padding: 0px;
+            vertical-align: middle;
+            width: 120px;
+            height: 60px;
+        }
+        a{
+            color: white;
+            padding: 40px;
+            font-size: 20px;
+            text-decoration: none;
+            position: relative;
+        }
+        b{
+            text-align: left;
+            font-size: 20px;
+            padding: 40px;
+        }
+
+        .main {
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            margin-left: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #0a1177;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1f2bb2;
+        }
+
+        @media screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main {
+                font-size: 16px;
+            }
+
+            input[type="text"], button {
+                width: 100%;
+                margin: 10px 0 0 0;
+            }
+        }
+
+        .result {
+            padding: 20px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .field {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .field strong {
+            display: inline-block;
+            width: 100px;
+            color: #0a1177;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="img">
+            <img src="{{ url_for('static', filename='Images/LIC.png') }}" alt="Logo"/>
+        </div>
+        <div>
+            <h1>LIC</h1>
+        </div>
+    </div>
+
+    <panel>
+        <b>HELLO USER! &nbsp;&nbsp; WELCOME</b>
+        <a href="/">Home</a>
+        <a href="/new">New Entry</a>
+        <a href="/display">Display</a>
+        <a href="/edit">Edit Entry</a>
+        <a href="/close">Close Entry</a>
+        <a href="/list">List of Policies</a>
+    </panel>
+
+    <div class="main">
+        <form method="POST">
+            <label for="policyNo">Policy No. :</label>
+            <input type="text" id="policyNo" name="policyNo" required />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    {% if data %}
+    <form method="POST">
+        <div class="result">
+            {% for key, value in data.items() %}
+                <div class="field">
+                    <label><strong>{{ key }}:</strong></label>
+                    <input type="text" name="{{ key }}" value="{{ value }}" />
+                </div>
+            {% endfor %}
+        </div>
+        <div style="padding: 20px;">
+            <button type="submit" name="update" value="true">Update</button>
+        </div>
+    </form>
+{% elif data is not none %}
+    <p>No policy found for the entered number.</p>
+{% endif %}
+
+</body>
+</html>
